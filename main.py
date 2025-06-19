@@ -65,3 +65,20 @@ class Score:
         font = pygame.font.Font(None, 36)
         score_text = font.render(f'Score: {self.score}  Level: {level_number}', True, (255, 255, 255))
         screen.blit(score_text, (10, 10))
+
+class Level:
+    def __init__(self):
+        self.current_level = 0
+        self.backgrounds = ["bg1.jpg", "bg2.jpg", "bg3.jpg"]
+        self.cloud_speed = [3, 5, 7]
+        self.start_time = time.time()
+
+    def next_level(self):
+        self.current_level += 1
+        self.start_time = time.time()
+
+    def reset(self):
+        self.current_level = 0
+
+    def is_level_completed(self):
+        return time.time() - self.start_time >= LEVEL_DURATION

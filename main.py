@@ -53,3 +53,15 @@ def check_collision(butterfly, clouds):
         if butterfly.rect.colliderect(cloud.rect):
             return True
     return False
+
+class Score:
+    def __init__(self):
+        self.score = 0
+
+    def increment(self):
+        self.score += 1
+
+    def draw(self, screen, level_number):
+        font = pygame.font.Font(None, 36)
+        score_text = font.render(f'Score: {self.score}  Level: {level_number}', True, (255, 255, 255))
+        screen.blit(score_text, (10, 10))

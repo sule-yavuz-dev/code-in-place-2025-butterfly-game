@@ -36,3 +36,20 @@ class Butterfly:
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)
+
+class Cloud:
+    def __init__(self, y_position):
+        self.image = pygame.image.load("cloud.png")
+        self.rect = self.image.get_rect(center=(WIDTH, y_position))
+
+        def update(Self, speed):
+            self.rect.x -= speed
+
+        def draw(self, screen):
+            screen.blit(self.image, self.rect)
+
+def check_collision(butterfly, clouds):
+    for cloud in clouds:
+        if butterfly.rect.colliderect(cloud.rect):
+            return True
+    return False
